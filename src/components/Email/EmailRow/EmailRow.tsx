@@ -8,8 +8,8 @@ import {
 
 import styles from './EmailRow.module.scss';
 import { IconButton } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
-import { Timestamp } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import type { Timestamp } from 'firebase/firestore';
 import { formatDate } from '@/utils/formatters';
 import { useDispatch } from 'react-redux';
 import { selectMail } from '@/store/mail/mailSlice';

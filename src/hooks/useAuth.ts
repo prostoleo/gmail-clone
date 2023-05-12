@@ -1,16 +1,13 @@
 import { useEffect } from 'react';
-// import { RootState } from '@/store';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { auth, googleAuthProvider } from '@/libs/firebase';
 import { logout, login } from '@/store/user/userSlice';
-// import { iLoginState } from './useLogin';
+
 import {
 	GoogleAuthProvider,
 	UserCredential,
-	// createUserWithEmailAndPassword,
-	// signInWithEmailAndPassword,
 	signInWithPopup,
-	// updateProfile,
 } from 'firebase/auth';
 import { selectUser } from '@/store/user/userSlice';
 import { useNavigate } from 'react-router';
@@ -47,13 +44,6 @@ export default function useAuth() {
 					photoURL: userAuth.photoURL,
 				})
 			);
-
-			/* dispatchLogin({
-				email: userAuth.email,
-				uid: userAuth.uid,
-				displayName: userAuth.displayName,
-				photoURL: userAuth.photoURL,
-			}); */
 		});
 	}, []);
 
@@ -62,9 +52,9 @@ export default function useAuth() {
 			const result = await signInWithPopup(auth, googleAuthProvider);
 
 			const credential = GoogleAuthProvider.credentialFromResult(result);
-			const token = credential?.accessToken;
+			// const token = credential?.accessToken;
 			// The signed-in user info.
-			const user = result.user;
+			// const user = result.user;
 
 			dispatchLogin(result);
 
@@ -78,43 +68,11 @@ export default function useAuth() {
 			const email = error.customData.email;
 			// The AuthCredential type that was used.
 			const credential = GoogleAuthProvider.credentialFromError(error);
+
+			console.log(`${errorCode} - ${errorMessage}`);
 		}
 	}
 
-	/* async function signInUser(state: iLoginState) {
-		try {
-			const userAuth = await signInWithEmailAndPassword(
-				auth,
-				state.email,
-				state.password
-			);
-
-			dispatchLogin(userAuth, state);
-		} catch (error) {
-			console.log('error: ', error);
-		}
-	} */
-
-	/* async function createUser(state: iLoginState) {
-		try {
-			const userAuth = await createUserWithEmailAndPassword(
-				auth,
-				state.email,
-				state.password
-			);
-
-			await updateProfile(auth?.currentUser!, {
-				displayName: state.fullName,
-				photoURL: state.photoURL,
-			});
-
-			dispatchLogin(userAuth, state);
-		} catch (error) {
-			console.log('error: ', error);
-		}
-	} */
-
-	// function dispatchLogin(userAuth: UserCredential, state: iLoginState) {
 	function dispatchLogin(userAuth: UserCredential) {
 		dispatch(
 			login({
@@ -128,10 +86,8 @@ export default function useAuth() {
 
 	const logoutOfApp = async () => {
 		try {
-			// console.log('logoutOfApp');
 			dispatch(logout);
 			await auth.signOut();
-			// console.log('auth signOut');
 		} catch (error) {
 			console.log('error: ', error);
 		}

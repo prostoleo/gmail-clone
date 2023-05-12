@@ -1,24 +1,22 @@
-import type { FC } from 'react';
-
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import AppsIcon from '@mui/icons-material/Apps';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { IconButton, Avatar } from '@mui/material';
+import {
+	Apps,
+	ArrowDropDown,
+	Notifications,
+	Search,
+	Menu,
+} from '@mui/icons-material';
 
-interface HeaderProps {}
-
-const Header: FC<HeaderProps> = ({}: HeaderProps) => {
+const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.headerLeft}>
 				<IconButton>
-					<MenuIcon />
+					<Menu />
 				</IconButton>
 				<Link
 					to={'/'}
@@ -30,16 +28,16 @@ const Header: FC<HeaderProps> = ({}: HeaderProps) => {
 				</Link>
 			</div>
 			<div className={styles.headerMiddle}>
-				<SearchIcon />
+				<Search />
 				<input type="text" placeholder="Search mail" />
-				<ArrowDropDownIcon className={styles.headerInputCaret} />
+				<ArrowDropDown className={styles.headerInputCaret} />
 			</div>
 			<div className={styles.headerRight}>
 				<IconButton>
-					<AppsIcon />
+					<Apps />
 				</IconButton>
 				<IconButton>
-					<NotificationsIcon />
+					<Notifications />
 				</IconButton>
 				<Avatar />
 			</div>

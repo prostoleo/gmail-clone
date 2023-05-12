@@ -1,21 +1,19 @@
-import { FC, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
 
 import Header from '@/components/Header/Header';
 import Sidebar from '@/components/Sidebar/Sidebar/Sidebar';
+import SendEmail from '@/components/Email/SendEmail/SendEmail';
+
+import { selectSendMessageIsOpen } from '@/store/mail/mailSlice';
 
 import styles from './DefaultLayout.module.scss';
 import './default.css';
-import SendEmail from '@/components/Email/SendEmail/SendEmail';
-import { useSelector } from 'react-redux';
-import { selectSendMessageIsOpen } from '@/store/mail/mailSlice';
-import { selectUser } from '@/store/user/userSlice';
 
-interface DefaultLayoutProps {}
-
-const DefaultLayout: FC<DefaultLayoutProps> = ({}) => {
+const DefaultLayout = () => {
 	const sendMessageIsOpen = useSelector(selectSendMessageIsOpen);
-	
 
 	return (
 		<>

@@ -7,11 +7,7 @@ import { Close as CloseIcon } from '@mui/icons-material';
 import { Button, IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { closeSendMessage } from '@/store/mail/mailSlice';
-// import { useMutation, useQueryClient } from '@tanstack/react-query';
-// import { addEmail } from '@/services/firebase';
-import { useMutationAddEmail, useMailData } from '@/hooks/data/useMailData';
-
-interface SendEmailProps {}
+import { useMailData } from '@/hooks/data/useMailData';
 
 export interface iSendEmail {
 	to: string;
@@ -19,7 +15,7 @@ export interface iSendEmail {
 	message: string;
 }
 
-const SendEmail: FC<SendEmailProps> = ({}) => {
+const SendEmail = () => {
 	const { mutationAddEmail } = useMailData();
 
 	const dispatch = useDispatch();
