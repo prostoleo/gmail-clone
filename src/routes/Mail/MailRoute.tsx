@@ -19,7 +19,7 @@ import {
 // import { useQuery, useQueryClient } from '@tanstack/react-query';
 // import { fetchEmailOnId } from '@/services/firebase';
 import { formatDate, stringify } from '@/utils/formatters';
-import useMailData from '@/hooks/data/useMailData';
+import { useGetMailOnId, useMailData } from '@/hooks/data/useMailData';
 
 interface MailRouteProps {}
 
@@ -27,9 +27,10 @@ const MailRoute: FC<MailRouteProps> = ({}) => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
-	const { useGetMailOnId } = useMailData();
-
-	const { isLoading, error, data } = useGetMailOnId(id!);
+	// const { isLoading, error, data } = useGetMailOnId(id!);
+	const {
+		getMailOnId: { data, isLoading, error },
+	} = useMailData(id);
 
 	if (isLoading) return <p>Loading..</p>;
 	if (error) return <p>error - {error.message}</p>;

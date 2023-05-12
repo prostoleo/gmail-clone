@@ -7,8 +7,9 @@ import { Close as CloseIcon } from '@mui/icons-material';
 import { Button, IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { closeSendMessage } from '@/store/mail/mailSlice';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addEmail } from '@/services/firebase';
+// import { useMutation, useQueryClient } from '@tanstack/react-query';
+// import { addEmail } from '@/services/firebase';
+import { useMutationAddEmail, useMailData } from '@/hooks/data/useMailData';
 
 interface SendEmailProps {}
 
@@ -19,18 +20,9 @@ export interface iSendEmail {
 }
 
 const SendEmail: FC<SendEmailProps> = ({}) => {
+	const { mutationAddEmail } = useMailData();
+
 	const dispatch = useDispatch();
-
-	const queryClient = useQueryClient();
-
-	const mutationAddEmail = useMutation({
-		mutationFn: (newEmail: iSendEmail) => addEmail(newEmail),
-		onSuccess: () => {
-			queryClient.invalidateQueries({
-				queryKey: ['emailsData'],
-			});
-		},
-	});
 
 	const {
 		handleSubmit,
@@ -39,7 +31,9 @@ const SendEmail: FC<SendEmailProps> = ({}) => {
 	} = useForm<iSendEmail>();
 
 	const onSubmit: SubmitHandler<iSendEmail> = (formData) => {
+		// useMutationAddEmail().mutate(formData);
 		mutationAddEmail.mutate(formData);
+		dispatch(closeSendMessage());
 	};
 
 	const closeSendMail = () => dispatch(closeSendMessage());

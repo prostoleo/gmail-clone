@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { RootState } from '@/store';
+// import { RootState } from '@/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { auth, googleAuthProvider } from '@/libs/firebase';
 import { logout, login } from '@/store/user/userSlice';
@@ -7,10 +7,10 @@ import { logout, login } from '@/store/user/userSlice';
 import {
 	GoogleAuthProvider,
 	UserCredential,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
+	// createUserWithEmailAndPassword,
+	// signInWithEmailAndPassword,
 	signInWithPopup,
-	updateProfile,
+	// updateProfile,
 } from 'firebase/auth';
 import { selectUser } from '@/store/user/userSlice';
 import { useNavigate } from 'react-router';
@@ -128,10 +128,10 @@ export default function useAuth() {
 
 	const logoutOfApp = async () => {
 		try {
-			console.log('logoutOfApp');
+			// console.log('logoutOfApp');
 			dispatch(logout);
 			await auth.signOut();
-			console.log('auth signOut');
+			// console.log('auth signOut');
 		} catch (error) {
 			console.log('error: ', error);
 		}

@@ -20,14 +20,15 @@ import EmailTabsItem from '@/components/Email/EmailTabsItem/EmailTabsItem';
 import EmailRow from '@/components/Email/EmailRow/EmailRow';
 // import { useQuery, useQueryClient } from '@tanstack/react-query';
 // import { fetchEmails } from '@/services/firebase';
-import useMailData from '@/hooks/data/useMailData';
+import { useGetMails, useMailData } from '@/hooks/data/useMailData';
 
 interface HomeRouteProps {}
 
 const HomeRoute: FC<HomeRouteProps> = ({}) => {
-	const { useGetMails } = useMailData();
-
-	const { isLoading, error, data } = useGetMails();
+	// const { isLoading, error, data } = useGetMails();
+	const {
+		getMails: { data, isLoading, error },
+	} = useMailData();
 
 	if (isLoading) return <p>Loading..</p>;
 	if (error) return <p>error - {error.message}</p>;
