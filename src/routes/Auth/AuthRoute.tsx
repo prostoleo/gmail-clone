@@ -9,9 +9,7 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router';
 import useAuth from '@/hooks/useAuth';
 
-interface AuthRouteProps {}
-
-const AuthRoute: FC<AuthRouteProps> = ({}) => {
+const AuthRoute = () => {
 	const { handleSignIn, user } = useAuth();
 	const navigate = useNavigate();
 

@@ -10,8 +10,14 @@ import {
 	Search,
 	Menu,
 } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
+import { selectUser } from '@/store/user/userSlice';
+import useAuth from '@/hooks/useAuth';
 
 const Header = () => {
+	const user = useSelector(selectUser);
+	const { logoutOfApp } = useAuth();
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.headerLeft}>
@@ -24,7 +30,7 @@ const Header = () => {
 						cursor: 'pointer',
 					}}
 				>
-					<img src="/gmail.svg" alt="" />
+					<img src="/gmail.png" alt="" />
 				</Link>
 			</div>
 			<div className={styles.headerMiddle}>
@@ -39,7 +45,9 @@ const Header = () => {
 				<IconButton>
 					<Notifications />
 				</IconButton>
-				<Avatar />
+				<button onClick={logoutOfApp}>
+					<Avatar src={user?.photoURL} alt={user?.displayName} />
+				</button>
 			</div>
 		</header>
 	);
