@@ -1,0 +1,94 @@
+.sendEmail {
+	position: fixed;
+	bottom: 0;
+	right: 1rem;
+
+	width: max(40%, 400px);
+
+	background-color: rgb(37, 37, 37);
+	color: white;
+
+	border: 1px solid whitesmoke;
+
+	border-bottom: none;
+
+	border-top-right-radius: 1rem;
+	border-top-left-radius: 1rem;
+
+	--px: 0.75rem;
+
+	// overflow: hidden;
+
+	// box-shadow: 0px 5px 7px -2px rgba($color: #000000, $alpha: 0.5);
+
+	.sendEmail__header {
+		padding-inline: var(--px, 0.75rem);
+		padding-block: var(--px, 0.75rem);
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		border-bottom: 1px solid hsla(0, 0%, 96%, 0.505);
+	}
+	.sendEmail__headerTitle {
+		font-weight: 600;
+	}
+
+	.sendEmail__headerBtn {
+		color: white;
+	}
+
+	.sendEmail__body {
+		display: grid;
+
+		background: white;
+		color: black;
+
+		box-shadow: 0px 5px 7px -2px rgba($color: #000000, $alpha: 0.5);
+
+		& > input,
+		textarea {
+			padding: 0.5em 0.75em;
+		}
+
+		& > input {
+			border-bottom: 1px solid whitesmoke;
+		}
+
+		& > small {
+			display: block;
+			padding-inline: var(--px);
+
+			color: red;
+			padding-block: 0.1em;
+		}
+
+		& > textarea {
+			resize: none;
+		}
+	}
+	.sendEmail__to {
+	}
+	.sendEmail__subject {
+	}
+	.sendEmail__messsage {
+		overflow-x: hidden;
+		overflow-y: auto;
+		resize: none;
+
+		max-width: 100%;
+	}
+	.sendEmail__footer {
+		padding: 0.75rem;
+	}
+
+	.sendEmail__footerBtn {
+		padding: 0.5em 1em;
+		border-radius: 0.5em;
+
+		background-color: #3079ed;
+		text-transform: capitalize;
+		color: white;
+	}
+}

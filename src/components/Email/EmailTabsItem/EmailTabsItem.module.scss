@@ -1,0 +1,27 @@
+.emailTabsItem {
+	display: flex;
+	align-items: center;
+
+	border-bottom-width: 0px;
+	padding: 1rem;
+
+	width: clamp(150px, 20%, 250px);
+	cursor: pointer;
+
+	svg {
+	}
+
+	.title {
+		margin-left: 1rem;
+
+		font-size: 0.875rem;
+		font-weight: 600;
+	}
+
+	&.selected,
+	&:hover {
+		background-color: whitesmoke;
+		border-width: 3px !important;
+		// bord
+	}
+}

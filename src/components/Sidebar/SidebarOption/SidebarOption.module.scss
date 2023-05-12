@@ -1,0 +1,63 @@
+.sidebarOption {
+	// width: 100%;
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+
+	padding-inline: 0.75rem;
+	padding-block: 0.25rem;
+
+	border-top-right-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+
+	cursor: pointer;
+	color: gray;
+
+	svg {
+		padding: 0.25rem;
+
+		height: 24px;
+	}
+
+	.title {
+		display: block;
+		flex: 1;
+		font-size: 0.875rem;
+		font-weight: 400;
+
+		margin-left: 0.75rem;
+	}
+
+	.number {
+		// display: none;
+		display: inline-block;
+		opacity: 0;
+
+		font-size: 0.875rem;
+	}
+
+	&:hover,
+	&.selected {
+		background-color: hsla(0, 55%, 61%, 0.3);
+
+		&,
+		.title,
+		.number {
+			// background-color: whitesmoke;
+			color: firebrick;
+			font-weight: 800;
+		}
+
+		.number {
+			opacity: 1;
+		}
+	}
+
+	&.selected {
+		// background-color: aquamarine;
+
+		/* .number {
+			display: inline;
+		} */
+	}
+}
